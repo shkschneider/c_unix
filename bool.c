@@ -1,14 +1,14 @@
-typedef enum	bool
+typedef enum bool
   {
     TRUE = 1,
     FALSE = 0
-  }		bool;
+  } bool;
 
 #include <stdio.h>
 
-int	main()
+int main()
 {
-  bool	b;
+  bool b;
 
   b = FALSE;
   if (!b)

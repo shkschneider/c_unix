@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-  int	i;
+  int i;
 
   if (argc == 1)
     printf("< moOh >\n");

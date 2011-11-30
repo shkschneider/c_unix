@@ -1,6 +1,6 @@
-int	my_ilen(int nb)
+int my_ilen(int nb)
 {
-  int	len;
+  int len;
 
   if (!nb)
     return (1);
@@ -13,9 +13,9 @@ int	my_ilen(int nb)
   return (len);
 }
 
-int	my_ilen_base(int nb, int base)
+int my_ilen_base(int nb, int base)
 {
-  int	len;
+  int len;
 
   if (!nb)
     return (1);

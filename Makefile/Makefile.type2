@@ -1,0 +1,53 @@
+#
+# Typical Makefile [Type2]
+#                  Stores OBJs in a separate directory
+#
+# Copyright (C) 2011  Alan "Shtark" SCHNEIDER
+#                     <shk.schneider[at]gmail.com>
+#
+
+#	Variables
+
+CC	= gcc
+
+NAME	= my
+
+CFLAGS	= -I.
+CFLAGS	:= -W -Wall -Wstrict-prototypes -pedantic -ansi
+CFLAGS	:= -funroll-loops -O3
+
+LDFLAGS	= -lc
+
+SRC	= $(shell find . -type f -name "*.c")
+SRC	:= $(subst ./,,$(SRC))
+
+OBJDIR	= obj# NO trailing slash
+OBJ	= $(SRC:%.c=%.o)
+OBJ	:= $(addprefix $(OBJDIR)/, $(OBJ))
+
+RM	= rm -f
+RMDIR	= rm -rf
+
+#	Rules
+
+$(NAME)	: $(OBJ)
+	@echo "--- SRC: [ $(SRC) ]"
+	@echo "--- OBJ: [ $(OBJ) ]"
+	$(CC) -o $(NAME) $(OBJ) $(LDFLAGS)
+
+all	: $(NAME)
+
+$(OBJDIR)/%.o : %.c
+	@mkdir -p $(@D)
+	$(CC) -c $< -o $@ $(CFLAGS)
+
+clean	:
+	$(RMDIR) $(OBJDIR)
+	$(RM) $(shell find . -type f -name "*~" -o -name "#*#")
+
+fclean	: clean
+	$(RM) $(NAME)
+
+re	: fclean all
+
+.PHONY	: all clean fclean re

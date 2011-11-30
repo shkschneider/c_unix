@@ -1,17 +1,17 @@
 #include <stdarg.h>
 #include <elf.h>
 
-#define HEXA_MIN	"0123456789abcdef"
-#define HEXA_CAP	"0123456789ABCDEF"
+#define HEXA_MIN "0123456789abcdef"
+#define HEXA_CAP "0123456789ABCDEF"
 
-void	my_putchar(char c)
+void my_putchar(char c)
 {
   write(1, &c, 1);
 }
 
-void	my_putstr(char *str)
+void my_putstr(char *str)
 {
-  int	i;
+  int i;
 
   if (str)
     for (i = 0; str[i]; i++)
@@ -20,10 +20,10 @@ void	my_putstr(char *str)
     my_putstr("(null)");
 }
 
-void		my_put_hexa(unsigned int nb, char *base)
+void my_put_hexa(unsigned int nb, char *base)
 {
-  unsigned int	beg;
-  unsigned int	end;
+  unsigned int beg;
+  unsigned int end;
 
   end = nb % 16;
   beg = (nb - end) / 16;
@@ -32,10 +32,10 @@ void		my_put_hexa(unsigned int nb, char *base)
   my_putchar(base[end]);
 }
 
-void	my_put_nbr(int nb)
+void my_put_nbr(int nb)
 {
-  int	beg;
-  int	end;
+  int beg;
+  int end;
 
   end = nb % 10;
   beg = (nb - end) / 10;
@@ -44,9 +44,9 @@ void	my_put_nbr(int nb)
   my_putchar('0' + end);
 }
 
-void		my_put_unbr(uint32_t nb)
+void my_put_unbr(uint32_t nb)
 {
-  uint32_t	diviz;
+  uint32_t diviz;
 
   if ((int)nb == -1)
     my_putstr("4294967295");
@@ -64,10 +64,10 @@ void		my_put_unbr(uint32_t nb)
     }
 }
 
-void		my_printf(char *all, ...)
+void my_printf(char *all, ...)
 {
-  va_list	args;
-  int		i;
+  va_list args;
+  int i;
 
   va_start(args, all);
   i = 0;
@@ -96,7 +96,7 @@ void		my_printf(char *all, ...)
   va_end(args);
 }
 
-int	main()
+int main(void)
 {
   my_printf("%s %d %i %c %x %X %u test\n", "test", 1, 2, 'c', 42, 42, 12887238732);
   my_printf("test %d %d %d %d\n", 64, 128, 512, 1024);

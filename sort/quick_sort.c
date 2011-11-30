@@ -1,19 +1,10 @@
-void	quick_sort_swap_right(int *left, int *right)
+void	quick_sort_swap(int *from, int *to)
 {
   int	tmp;
 
-  tmp = *left;
-  *left = *right;
-  *right = tmp;
-}
-
-void	quick_sort_swap_left(int *left, int *right)
-{
-  int	tmp;
-
-  tmp = *right;
-  *right = *left;
-  *left = tmp;
+  tmp = *from;
+  *from = *to;
+  *to = tmp;
 }
 
 void	quick_sort(int *tabl, int size)
@@ -33,11 +24,11 @@ void	quick_sort(int *tabl, int size)
 	  {
             while (left < right && *right > *p)
 	      right--;
-	    quick_sort_swap_right(left, right);
+	    quick_sort_swap(left, right);
             p = right;
             while (left < right && *left <= *p)
 	      left++;
-	    quick_sort_swap_left(left, right);
+	    quick_sort_swap(right, left);
             p = left;
 	  }
       quick_sort(tabl, left - tabl);

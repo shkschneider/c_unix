@@ -10,11 +10,11 @@
 # define DATE_SEC	's'
 #endif /* !_PHP_DATE_ */
 
-int		phpdate(char c)
+int phpdate(char c)
 {
-  time_t	clock;
-  struct tm	*t;
-  int		rt;
+  time_t clock;
+  struct tm *t;
+  int rt;
 
   rt = 0;
   clock = time(0);
