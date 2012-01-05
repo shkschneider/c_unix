@@ -1,0 +1,51 @@
+#
+# Typical Makefile [Type3]
+#                  Assemble .o files as a static libray.
+#                  Attention: do NOT place a main()
+#
+# Copyright (C) 2011  Alan "Shtark" SCHNEIDER
+#                     <shk.schneider[at]gmail.com>
+#
+
+#	Variables
+
+NAME	= libcfree.a
+
+CC	= gcc
+
+CFLAGS	= -I.
+CFLAGS	:= -W -Wall -Wstrict-prototypes -pedantic --std=c99
+CFLAGS	:= -fno-strict-aliasing -funroll-loops -O3
+
+LDFLAGS	= -lc
+
+RM	= rm -f
+
+SRC	= $(shell find . -type f -name "*.c")
+SRC	:= $(subst ./,,$(SRC))
+
+OBJ	= $(SRC:%.c=%.o)
+
+AR	= ar -rcu
+
+RANLIB	= ranlib
+
+#	Rules
+
+$(NAME)	: all
+	$(AR) $(NAME) $(OBJ)
+	$(RANLIB) $(NAME)
+
+all	: $(OBJ)
+
+.c.o	:
+	$(CC) -c $< -o $@ $(CFLAGS)
+
+clean	:
+	$(RM) $(OBJ)
+	$(RM) *~ \#*\#
+
+fclean	: clean
+	$(RM) $(NAME)
+
+re	: fclean $(NAME)
