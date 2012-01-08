@@ -11,7 +11,11 @@ LDFLAGS	=	-lc
 
 RM	=	rm -f
 
-SRC	=	cfree.c cfree_check.c cfree_list.c cmalloc.c
+CP	=	cp -r
+
+SRC	=	cfree_list.c\
+		cmalloc.c cfree.c\
+		cfree_check.c
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -19,7 +23,11 @@ AR	=	ar -rcu
 
 RANLIB	=	ranlib
 
-$(NAME)	:	all
+INC	=	/usr/include
+
+LIB	=	/usr/lib
+
+$(NAME)	:	$(OBJ)
 	$(AR) $(NAME) $(OBJ)
 	$(RANLIB) $(NAME)
 
@@ -37,5 +45,10 @@ fclean	:	clean
 
 re	:	fclean $(NAME)
 
-run	:	$(NAME)
-	@./$(NAME)
+install	:	$(NAME)
+	$(CP) cfree.h $(INC)
+	$(CP) $(NAME) $(LIB)
+
+uninstall	:
+	$(RM) $(INC)/cfree.h
+	$(RM) $(LIB)/$(NAME)
