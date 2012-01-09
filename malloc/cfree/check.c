@@ -3,13 +3,16 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#include "cfree.h"
+#include "core.h"
 #include "list.h"
 
 extern struct s_cfree * gl_cfree;
 extern struct s_cfree_c gl_cfree_c;
 
-#define ALLOC (gl_cfree_c.cmalloc)
+#define ALLOC (gl_cfree_c.cmalloc + gl_cfree_c.crealloc + gl_cfree_c.ccalloc)
+#define MALLOC (gl_cfree_c.cmalloc)
+#define REALLOC (gl_cfree_c.crealloc)
+#define CALLOC (gl_cfree_c.ccalloc)
 #define FREE (gl_cfree_c.cfree)
 
 size_t cfree_check(void)
@@ -24,16 +27,18 @@ size_t cfree_check(void)
   bytes = 0;
   if (gl_cfree) {
     printf("==%d==\n", pid);
-    printf("==%d== MEMORY LEAK DETECTED ==%d==\n", pid, pid);
-    printf("==%d==   Unfree'd malloc: %d\n", pid, leaks);
+    printf("==%d== MEMORY LEAK DETECTED\n", pid);
+    printf("==%d==   Unfree'd alloc: %d\n", pid, leaks);
     for (l = gl_cfree; l; l = l->next) {
       printf("==%d==     %d B at %p from %s\n", pid, (int)l->size, l->data, l->info);
       bytes += l->size;
     }
     printf("==%d==   Total memory lost: %d B in %d missing free\n", pid, (int)bytes, leaks);
-    printf("==%d== MEMORY_LEAK_DETECTED ==%d==\n", pid, pid);
+    printf("==%d== MEMORY_LEAK_DETECTED\n", pid);
     printf("==%d==\n", pid);
+  } else {
+    printf("==%d== No memory leaks found\n", pid);
   }
-  printf("==%d== cfree: %d alloc, %d free\n", pid, ALLOC, FREE);
+  printf("==%d== %d alloc (%d malloc, %d realloc, %d calloc), %d free\n", pid, ALLOC, MALLOC, REALLOC, CALLOC, FREE);
   return (bytes);
 }

@@ -17,15 +17,15 @@ extern struct s_cfree_c gl_cfree_c;
   free() returns no value.
 */
 
-void cfree(void * p)
+void cfree(void * data)
 {
   struct s_cfree * l;
   int pid;
 
-  if (p) {
+  if (data) {
     pid = getpid();
     for (l = gl_cfree; l; l = l->next) {
-      if (l->data == p) {
+      if (data == l->data) {
 	free(l->info);
 	free(l->data);
 	if (l->prev)
@@ -42,7 +42,7 @@ void cfree(void * p)
     if (pid) {
       printf("==%d==\n", pid);
       printf("==%d== INVALID FREE DETECTED ==%d==\n", pid, pid);
-      printf("==%d==   %p points to an un-referenced malloc() or is already free\n", pid, p);
+      printf("==%d==   %p points to an un-referenced malloc() or is already free\n", pid, data);
       printf("==%d==   You most likely did not include cfree.h in all sources\n", pid);
       printf("==%d== INVALID FREE DETECTED ==%d==\n", pid, pid);
       printf("==%d==\n", pid);

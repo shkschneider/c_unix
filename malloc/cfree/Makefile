@@ -14,8 +14,10 @@ RM	=	rm -f
 CP	=	cp -r
 
 SRC	=	list.c\
-		cmalloc.c cfree.c\
+		cmalloc.c crealloc.c cfree.c\
 		check.c
+
+INC	=	cfree.h
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -23,9 +25,9 @@ AR	=	ar -rcu
 
 RANLIB	=	ranlib
 
-INC	=	/usr/include
+INC_DIR	=	/usr/include
 
-LIB	=	/usr/lib
+LIB_DIR	=	/usr/lib
 
 $(NAME)	:	$(OBJ)
 	$(AR) $(NAME) $(OBJ)
@@ -46,9 +48,9 @@ fclean	:	clean
 re	:	fclean $(NAME)
 
 install	:	$(NAME)
-	$(CP) cfree.h $(INC)
-	$(CP) $(NAME) $(LIB)
+	$(CP) $(INC) $(INC_DIR)
+	$(CP) $(NAME) $(LIB_DIR)
 
 uninstall	:
-	$(RM) $(INC)/cfree.h
-	$(RM) $(LIB)/$(NAME)
+	$(RM) $(INC_DIR)/cfree.h
+	$(RM) $(LIB_DIR)/$(NAME)
