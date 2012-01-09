@@ -4,6 +4,8 @@ It is released under the GNU GPLv2+.
 
 In cfree.h are included some defines:
 # define malloc(x) cmalloc(x, __FUNCTION__, __FILE__, __LINE__)
+# define realloc(p, x) crealloc(p, x, __FUNCTION__, __FILE__, __LINE__)
+# define calloc(n, x) ccalloc(n, x, __FUNCTION__, __FILE__, __LINE__)
 # define free(x) cfree(x)
 
 So you don't need to change all your code to debug with libcfree.
@@ -34,12 +36,12 @@ int main(void) {
 Here is the output from cfree_check():
 ==9238==
 ==9238== MEMORY LEAK DETECTED ==9238==
-==9238==   Unfree'd malloc: 1
+==9238==   Unfree'd alloc: 1
 ==9238==     10 B at 0x13c0010 from main.c:main() l.8
 ==9238==   Total memory lost: 10 B
 ==9238== MEMORY_LEAK_DETECTED ==9238==
 ==9238==
-==9238== cfree: 3 alloc, 2 free
+==9238== cfree: 3 alloc (3 malloc, 0 realloc, 0 calloc), 2 free
 
 10 B have been lost in 1 missing free.
 Those bytes have been alloc'd in function main(), file: main.c, line: 8
