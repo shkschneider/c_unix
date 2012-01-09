@@ -3,17 +3,27 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#include "cfree_list.h"
+#include "list.h"
 
-t_cfree * gl_cfree = NULL;
-int gl_cfree_c = 0;
+extern struct s_cfree * gl_cfree;
+extern struct s_cfree_c gl_cfree_c;
+
+/*
+  void free(void *ptr);
+
+  free() frees the memory space pointed to by ptr, which must have been returned by a previous call to malloc(), calloc() or realloc().  Otherwise, or if free(ptr) has already been called before, undefined behavior occurs.  If ptr is NULL,  no  operation  is
+  performed.
+
+  free() returns no value.
+*/
 
 void cfree(void * p)
 {
-  t_cfree * l;
+  struct s_cfree * l;
   int pid;
 
-  if (gl_cfree && p)
+  if (p) {
+    pid = getpid();
     for (l = gl_cfree; l; l = l->next) {
       if (l->data == p) {
 	free(l->info);
@@ -25,14 +35,17 @@ void cfree(void * p)
 	if (l->next)
 	  l->next->prev = l->prev;
 	free(l);
-	return ;
+	gl_cfree_c.cfree++;
+	pid = 0;
       }
     }
-  pid = getpid();
-  printf("==%d==\n", pid);
-  printf("==%d== INVALID FREE DETECTED ==%d==\n", pid, pid);
-  printf("==%d==   %p points to an un-referenced malloc()\n", pid, p);
-  printf("==%d==   You most likely did not include cfree.h in all sources\n", pid);
-  printf("==%d== INVALID FREE DETECTED ==%d==\n", pid, pid);
-  printf("==%d==\n", pid);
+    if (pid) {
+      printf("==%d==\n", pid);
+      printf("==%d== INVALID FREE DETECTED ==%d==\n", pid, pid);
+      printf("==%d==   %p points to an un-referenced malloc() or is already free\n", pid, p);
+      printf("==%d==   You most likely did not include cfree.h in all sources\n", pid);
+      printf("==%d== INVALID FREE DETECTED ==%d==\n", pid, pid);
+      printf("==%d==\n", pid);
+    }
+  }
 }

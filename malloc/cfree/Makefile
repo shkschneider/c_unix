@@ -13,9 +13,9 @@ RM	=	rm -f
 
 CP	=	cp -r
 
-SRC	=	cfree_list.c\
+SRC	=	list.c\
 		cmalloc.c cfree.c\
-		cfree_check.c
+		check.c
 
 OBJ	=	$(SRC:.c=.o)
 
