@@ -9,12 +9,6 @@
 extern struct s_cfree * gl_cfree;
 extern struct s_cfree_c gl_cfree_c;
 
-#define ALLOC (gl_cfree_c.cmalloc + gl_cfree_c.crealloc + gl_cfree_c.ccalloc)
-#define MALLOC (gl_cfree_c.cmalloc)
-#define REALLOC (gl_cfree_c.crealloc)
-#define CALLOC (gl_cfree_c.ccalloc)
-#define FREE (gl_cfree_c.cfree)
-
 size_t cfree_check(void)
 {
   struct s_cfree * l;

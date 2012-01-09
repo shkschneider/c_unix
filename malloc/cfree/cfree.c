@@ -1,7 +1,4 @@
 #include <stdlib.h>
-#include <stdio.h>
-#include <sys/types.h>
-#include <unistd.h>
 
 #include "list.h"
 
@@ -20,10 +17,8 @@ extern struct s_cfree_c gl_cfree_c;
 void cfree(void * data)
 {
   struct s_cfree * l;
-  int pid;
 
-  if (data) {
-    pid = getpid();
+  if (data)
     for (l = gl_cfree; l; l = l->next) {
       if (data == l->data) {
 	free(l->info);
@@ -36,16 +31,6 @@ void cfree(void * data)
 	  l->next->prev = l->prev;
 	free(l);
 	gl_cfree_c.cfree++;
-	pid = 0;
       }
     }
-    if (pid) {
-      printf("==%d==\n", pid);
-      printf("==%d== INVALID FREE DETECTED ==%d==\n", pid, pid);
-      printf("==%d==   %p points to an un-referenced malloc() or is already free\n", pid, data);
-      printf("==%d==   You most likely did not include cfree.h in all sources\n", pid);
-      printf("==%d== INVALID FREE DETECTED ==%d==\n", pid, pid);
-      printf("==%d==\n", pid);
-    }
-  }
 }

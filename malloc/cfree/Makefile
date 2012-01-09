@@ -14,7 +14,7 @@ RM	=	rm -f
 CP	=	cp -r
 
 SRC	=	list.c\
-		cmalloc.c crealloc.c cfree.c\
+		cmalloc.c crealloc.c ccalloc.c cfree.c\
 		check.c
 
 INC	=	cfree.h

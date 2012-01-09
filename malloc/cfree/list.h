@@ -18,6 +18,12 @@ struct s_cfree_c
   int cfree;
 };
 
+# define ALLOC (gl_cfree_c.cmalloc + gl_cfree_c.crealloc + gl_cfree_c.ccalloc)
+# define MALLOC (gl_cfree_c.cmalloc)
+# define REALLOC (gl_cfree_c.crealloc)
+# define CALLOC (gl_cfree_c.ccalloc)
+# define FREE (gl_cfree_c.cfree)
+
 # ifndef CFREE_INFO_MAX
 #  define CFREE_INFO_MAX 64
 # endif /* !CFREE_INFO_MAX */
