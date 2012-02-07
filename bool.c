@@ -6,7 +6,7 @@ typedef enum bool
 
 #include <stdio.h>
 
-int main()
+int main(void)
 {
   bool b;
 
