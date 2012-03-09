@@ -6,7 +6,7 @@
 
 int usrinfo(int uid)
 {
-  struct passwd *user_info;
+  struct passwd *user_info = NULL;
 
   user_info = getpwuid(uid);
   if (user_info)
