@@ -4,30 +4,25 @@
 
 void fill(int *t, int nb)
 {
-  int i;
-  int c;
+  int i = 32;
+  int c = 0;
 
-  c = 0;
   for (i = 32; nb > 0; c = 0)
-    {
-      i = 32;
-      while (i >= 1)
-	{
-	  if (nb >= i)
-	    {
-	      t[c] = 1;
-	      nb -= i;
-	    }
-	  i /= 2;
-	  c++;
-	}
-    }
+    for (i = 32; i >= 1; i /=2)
+      {
+	if (nb >= i)
+	  {
+	    t[c] = 1;
+	    nb -= i;
+	  }
+	c++;
+      }
 }
 
-int bindate(void)
+int main(void)
 {
   time_t clock;
-  struct tm *t;
+  struct tm *t = NULL;
 
   int h[6] = { 0, 0, 0, 0, 0 };
   int m[6] = { 0, 0, 0, 0, 0 };
