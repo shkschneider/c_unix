@@ -1,16 +1,16 @@
-void	heap_sort_swap(int *tabl, int n1, int n2)
+void heap_sort_swap(int *tabl, int n1, int n2)
 {
-  int	tmp;
+  int tmp;
 
   tmp = tabl[n1];
   tabl[n1] = tabl[n2];
   tabl[n2] = tmp;
 }
 
-void	do_heap_sort(int *tabl, int n, int k, int tabl_size)
+void do_heap_sort(int *tabl, int n, int k, int tabl_size)
 {
-  int	i;
-  int	j;
+  int i;
+  int j;
 
   while (tabl_size--)
     {
@@ -29,12 +29,13 @@ void	do_heap_sort(int *tabl, int n, int k, int tabl_size)
         }
     }
 }
-void	heap_sort(int *tabl, int size)
+
+void heap_sort(int *tabl, int size)
 {
-  int	n;
-  int	k;
-  int	tabl_size;
-  int	tmp;
+  int n;
+  int k;
+  int tabl_size;
+  int tmp;
 
   for (tabl_size = 1; tabl_size < size; tabl_size++)
     {

@@ -2,43 +2,43 @@
 
 #include "list.h"
 
-t_list		*list_create(void *data)
+t_list *list_create(void *data)
 {
-  t_list	*l = malloc(sizeof(t_list));
+  t_list *l = malloc(sizeof(t_list));
 
   l->data = data;
-  l->next = 0;
+  l->next = NULL;
   return (l);
 }
 
-t_list		*list_add_first(t_list *l, void *data)
+t_list *list_add_first(t_list *l, void *data)
 {
-  t_list	*new = malloc(sizeof(t_list));
+  t_list *new = malloc(sizeof(t_list));
 
   if (!l)
-    return (0);
+    return (NULL);
   new->data = data;
   new->next = l;
   return (new);
 }
 
-t_list		*list_add_last(t_list *l, void *data)
+t_list *list_add_last(t_list *l, void *data)
 {
-  t_list	*new = malloc(sizeof(t_list));
+  t_list *new = malloc(sizeof(t_list));
 
   if (!l)
-    return (0);
+    return (NULL);
   new->data = data;
-  new->next = 0;
+  new->next = NULL;
   while (l->next)
     l = l->next;
   l->next = new;
   return (new);
 }
 
-int	list_count(t_list *l)
+int list_count(t_list *l)
 {
-  int	i;
+  int i;
 
   if (!l)
     return (0);
@@ -47,28 +47,28 @@ int	list_count(t_list *l)
   return (i);
 }
 
-t_list		*list_remove_first(t_list *l)
+t_list *list_remove_first(t_list *l)
 {
-  t_list	*first;
+  t_list *first;
 
   if (!l)
-    return ;
+    return (NULL);
   first = l->next;
   free(l);
   return (first);
 }
 
-t_list		*list_remove_last(t_list *l)
+t_list *list_remove_last(t_list *l)
 {
-  t_list	*last;
-  t_list	*last_last;
+  t_list *last = NULL;
+  t_list *last_last = NULL;
 
   if (!l)
-    return ;
+    return (NULL);
   if (list_count(l) == 1)
     {
       free(l);
-      return (0);
+      return (NULL);
     }
   last = l;
   last_last = l;
@@ -77,28 +77,28 @@ t_list		*list_remove_last(t_list *l)
       last_last = last;
       last = last->next;
     }
-  last_last->next = 0;
+  last_last->next = NULL;
   free(last);
   return (l);
 }
 
-t_list	*list_empty(t_list *l)
+t_list	*list_clear(t_list *l)
 {
   if (!l)
-    return ;
+    return (NULL);
   list_empty(l->next);
   free(l);
-  return (0);
+  return (NULL);
 }
 
-t_list		*list_reverse(t_list *l)
+t_list *list_reverse(t_list *l)
 {
-  t_list	*t;
-  t_list	*cur;
+  t_list *t = NULL;
+  t_list *cur = NULL;
 
   if (!l)
-    return (0);
-  cur = 0;
+    return (NULL);
+  cur = NULL;
   while (l)
     {
       t = l;

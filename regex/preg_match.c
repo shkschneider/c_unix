@@ -1,10 +1,10 @@
 #include <regex.h>
 #include <stdlib.h>
 
-/* Note:	Prefer fnmatch(3) for filename or pathname */
-int		preg_match(char *str_regex, char *str_request)
+/* Note: prefer fnmatch(3) for filename or pathname */
+int preg_match(char *str_regex, char *str_request)
 {
-  regex_t	preg;
+  regex_t preg;
 
   if (regcomp(&preg, str_regex, REG_NOSUB | REG_EXTENDED) == 0)
     {

@@ -6,13 +6,13 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 
-# define UDP_PORT	4242
+#define UDP_PORT 4242
 
-int			main(void)
+int main(void)
 {
-  int			s, t, len, on = 1;
-  struct sockaddr_in	local, remote;
-  char			str[100];
+  int s, t, len, on = 1;
+  struct sockaddr_in local, remote;
+  char str[100];
 
   if ((s = socket(AF_INET, SOCK_DGRAM, 0)) < 0)
     return (1);

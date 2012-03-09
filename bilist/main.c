@@ -2,7 +2,7 @@
 
 #include "bilist.h"
 
-void	bilist_print(t_bilist *l)
+void bilist_print(t_bilist *l)
 {
   if (!l)
     return ;
@@ -13,9 +13,9 @@ void	bilist_print(t_bilist *l)
   bilist_print(l->next);
 }
 
-int		main(void)
+int main(void)
 {
-  t_bilist	*l;
+  t_bilist *l = NULL;
 
   printf("creating\n");
   l = bilist_create((void *)1);

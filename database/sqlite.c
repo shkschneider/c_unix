@@ -6,13 +6,15 @@
 #include <stdio.h>
 #include <sqlite3.h>
 
-#define DATABASE "/tmp/TEST.db"
+#define DATABASE "/tmp/dev.db"
 
 sqlite3 *db = NULL;
 
 static int callback(void *unused, int argc, char **argv, char **cols)
 {
-  for (int i = 0; i < argc; i++)
+  int i;
+
+  for (i = 0; i < argc; i++)
     printf("%s%s=%s", (i ? ", " : ""), cols[i], argv[i] ? argv[i] : "NULL");
   printf("\n");
   return (0);
@@ -40,7 +42,7 @@ int main(void)
   if (sqlite3_exec(db, "select * from test;", callback, NULL, NULL) != SQLITE_OK)
     fprintf(stderr, "SQL error: %s\n", sqlite3_errmsg(db));
   /* drop table */
-  if (sqlite3_exec(db, "drop table if exists TEST.test;", callback, NULL, NULL) != SQLITE_OK)
+  if (sqlite3_exec(db, "drop table if exists test;", callback, NULL, NULL) != SQLITE_OK)
     fprintf(stderr, "SQL error: %s\n", sqlite3_errmsg(db));
   /* drop database */
   if (remove(DATABASE))

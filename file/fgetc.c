@@ -1,9 +1,9 @@
 #include <stdio.h>
 
-int	main(void)
+int main(void)
 {
-  FILE	*f;
-  char	c;
+  FILE *f = NULL;
+  char c;
 
   if ((f = fopen("test", "r")))
     {

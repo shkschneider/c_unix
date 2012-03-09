@@ -6,14 +6,14 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 
-# define TCP_PORT	4242
-# define MAX_CLIENTS	5
+#define TCP_PORT 4242
+#define MAX_CLIENTS 5
 
-int			main(void)
+int main(void)
 {
-  int			s, s2, t, len, on = 1;
-  struct sockaddr_in	local, remote;
-  char			str[100];
+  int s, s2, t, len, on = 1;
+  struct sockaddr_in local, remote;
+  char str[100];
 
   if ((s = socket(AF_INET, SOCK_STREAM, 0)) < 0)
     return (1);

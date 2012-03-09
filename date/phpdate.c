@@ -13,7 +13,7 @@
 int phpdate(char c)
 {
   time_t clock;
-  struct tm *t;
+  struct tm *t = NULL;
   int rt;
 
   rt = 0;

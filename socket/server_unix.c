@@ -6,14 +6,14 @@
 #include <sys/socket.h>
 #include <sys/un.h>
 
-# define SOCK_PATH	"socket"
-# define MAX_CLIENTS	5
+#define SOCK_PATH "socket"
+#define MAX_CLIENTS 5
 
-int			main(void)
+int main(void)
 {
-  int			s, s2, t, len, on = 1;
-  struct sockaddr_un	local, remote;
-  char			str[100];
+  int s, s2, t, len, on = 1;
+  struct sockaddr_un local, remote;
+  char str[100];
 
   if ((s = socket(AF_UNIX, SOCK_STREAM, 0)) < 0)
     return (1);

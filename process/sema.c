@@ -3,10 +3,10 @@
 #include <pthread.h>
 #include <semaphore.h>
 
-static sem_t	sema;
-int		the_end;
+static sem_t sema;
+int the_end;
 
-void	*thread1_process(void *arg)
+void *thread1_process(void *arg)
 {
   while (!the_end)
     {
@@ -17,9 +17,9 @@ void	*thread1_process(void *arg)
   pthread_exit(0);
 }
 
-void	*thread2_process(void *arg)
+void *thread2_process(void *arg)
 {
-  int	i;
+  int i;
 
   for (i = 0; i < 5; i++)
     {
@@ -32,10 +32,10 @@ void	*thread2_process(void *arg)
   pthread_exit(0);
 }
 
-int		main(int argc, char **argv)
+int main(void)
 {
-  pthread_t	thread1;
-  pthread_t	thread2;
+  pthread_t thread1;
+  pthread_t thread2;
 
   sem_init(&sema, 0, 0);
   pthread_create(&thread1, NULL, thread1_process, NULL);

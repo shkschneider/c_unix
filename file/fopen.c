@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-int	main(void)
+int main(void)
 {
-  FILE	*f;
+  FILE *f = NULL;
 
   if ((f = fopen("test", "r+")))
     {

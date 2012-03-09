@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include <pthread.h>
 
-static pthread_mutex_t	mutex;
-static int		data[5];
+static pthread_mutex_t mutex;
+static int data[5];
 
-void	*read_data_process(void *arg)
+void *read_data_process(void *arg)
 {
-  int	i;
+  int i;
 
   pthread_mutex_lock(&mutex);
   for (i = 0; i < 5; i++)
@@ -16,9 +16,9 @@ void	*read_data_process(void *arg)
   pthread_exit(0);
 }
 
-void	*write_data_process(void *arg)
+void *write_data_process(void *arg)
 {
-  int	i;
+  int i;
 
   pthread_mutex_lock(&mutex);
   for (i = 0; i < 5; i++)
@@ -30,10 +30,10 @@ void	*write_data_process(void *arg)
   pthread_exit(0);
 }
 
-int		main(int argc, char **argv)
+int main(void)
 {
-  pthread_t	thread1;
-  pthread_t	thread2;
+  pthread_t thread1;
+  pthread_t thread2;
 
   pthread_mutex_init(&mutex, NULL);
   pthread_create(&thread1, NULL, write_data_process, NULL);

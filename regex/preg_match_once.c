@@ -2,13 +2,13 @@
 #include <string.h>
 #include <regex.h>
 
-char		*preg_match_once(char *regex, char *str_request)
+char *preg_match_once(char *regex, char *str_request)
 {
-  char		*match;
-  regex_t	preg;
-  regmatch_t	*pmatch;
-  size_t	size;
-  char          *str_regex;
+  char *match = NULL;
+  regex_t preg;
+  regmatch_t *pmatch = NULL;
+  size_t size;
+  char *str_regex = NULL;
 
   str_regex = malloc(sizeof(char) * (strlen(regex) + 2));
   strcpy(str_regex, regex);

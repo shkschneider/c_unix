@@ -6,11 +6,11 @@
 #include <fcntl.h>
 #include <sys/wait.h>
 
-int	main(void)
+int main(void)
 {
-  pid_t	pid;
-  int	pair[2];
-  char	buf[10];
+  pid_t pid;
+  int pair[2];
+  char buf[10];
 
   if (socketpair(AF_UNIX, SOCK_STREAM, 0, pair) < 0)
     return (1);

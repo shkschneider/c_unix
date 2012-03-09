@@ -1,12 +1,12 @@
 #include <stdlib.h>
 
-void	do_fusion_sort(int *tabl, int *tabl_cpy, int size)
+void do_fusion_sort(int *tabl, int *tabl_cpy, int size)
 {
-  int	n;
-  int	i;
-  int	j;
-  int	mid;
-  int	*tabl_cpy2;
+  int n;
+  int i;
+  int j;
+  int mid;
+  int *tabl_cpy2 = NULL;
 
   mid = size / 2;
   if (mid > 1)
@@ -22,10 +22,10 @@ void	do_fusion_sort(int *tabl, int *tabl_cpy, int size)
     tabl[n++] = tabl_cpy2[j++];
 }
 
-void	fusion_sort(int *tabl, int size)
+void fusion_sort(int *tabl, int size)
 {
-  int	*tabl_cpy;
-  int	i;
+  int *tabl_cpy = NULL;
+  int i;
 
   tabl_cpy = malloc(sizeof(int) * size);
   for (i = 0; i < size; i++)

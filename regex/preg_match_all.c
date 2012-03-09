@@ -3,18 +3,18 @@
 #include <stdlib.h>
 #include <string.h>
 
-char		**preg_match_all(char *regex, char *str_request, int *nb_match)
+char **preg_match_all(char *regex, char *str_request, int *nb_match)
 {
-  int		i;
-  regex_t	preg;
-  char		**matches;
-  regmatch_t	*pmatch;
-  char		*str_regex;
+  int i;
+  regex_t preg;
+  char **matches = NULL;
+  regmatch_t *pmatch = NULL;
+  char *str_regex = NULL;
 
   str_regex = malloc(sizeof(char) * (strlen(regex) + 2));
   strcpy(str_regex, regex);
   strcat(str_regex, "()");
-  matches =  0;
+  matches =  NULL;
   i = 0;
   if (!regcomp(&preg, str_regex, REG_EXTENDED))
     if (preg.re_nsub)
@@ -31,7 +31,7 @@ char		**preg_match_all(char *regex, char *str_request, int *nb_match)
               }
             if (nb_match)
               *nb_match = i - 1;
-            matches[i - 1] = 0;
+            matches[i - 1] = NULL;
           }
         regfree(&preg);
       }

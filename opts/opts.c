@@ -11,7 +11,7 @@ struct option opts_list[] =
 
 char *opts_init(void)
 {
-  char *opts;
+  char *opts = NULL;
   int i;
   int j;
 
@@ -52,7 +52,7 @@ void opts_error(char *opts)
 
 int opts_parse(int argc, char **argv)
 {
-  char *opts;
+  char *opts = NULL;
   int c;
   int i;
 

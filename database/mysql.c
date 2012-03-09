@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <mysql/mysql.h>
 
-#define DATABASE "drupal"
+#define DATABASE "dev"
 
 MYSQL db;
 
@@ -34,7 +34,7 @@ int main(void)
   mysql_init(&db);
   mysql_options(&db, MYSQL_READ_DEFAULT_GROUP, "option");
   /* open database */
-  if (!mysql_real_connect(&db, "localhost", "drupal", "evolution", DATABASE, 0, NULL, 0))
+  if (!mysql_real_connect(&db, "localhost", "user", "password", DATABASE, 0, NULL, 0))
     {
       fprintf(stderr, "SQL error #%u: %s\n", mysql_errno(&db), mysql_error(&db));
       mysql_close(&db);

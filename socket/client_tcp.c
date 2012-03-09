@@ -7,14 +7,14 @@
 #include <netinet/in.h>
 #include <netdb.h>
 
-# define TCP_PORT	4242
+#define TCP_PORT 4242
 
-int			main(void)
+int main(void)
 {
-  int			s, t, len;
-  struct sockaddr_in	remote;
-  char			str[100];
-  struct hostent	*he;
+  int s, t, len;
+  struct sockaddr_in remote;
+  char str[100];
+  struct hostent *he = NULL;
 
   if ((s = socket(AF_INET, SOCK_STREAM, 0)) < 0)
     return (1);

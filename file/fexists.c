@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-int	fexists(const char *filename)
+int fexists(const char *filename)
 {
-  FILE	*f;
+  FILE *f = NULL;
 
   if ((f = fopen(filename, "r")))
     {
@@ -12,7 +12,7 @@ int	fexists(const char *filename)
   return (0);
 }
 
-int	main(void)
+int main(void)
 {
   printf("%d\n", fexists("test"));
   return (0);

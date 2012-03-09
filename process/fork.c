@@ -5,7 +5,7 @@
 #include <sys/wait.h>
 #include <string.h>
 
-void	work(char *p)
+void work(char *p)
 {
   if (!strcmp(p, "child"))
     printf("%s: #%d ##%d\n", p, getpid(), getppid());
@@ -14,7 +14,7 @@ void	work(char *p)
   fflush(stdout);
 }
 
-int	main(void)
+int main(void)
 {
   pid_t	pid;
 

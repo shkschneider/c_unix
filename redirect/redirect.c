@@ -8,7 +8,7 @@
  * Does "grep root < /etc/passwd > out"
  */
 
-int main(int argc, char **argv)
+int main(void)
 {
   int in, out;
   char *grep_args[] = {"grep", "root", NULL};

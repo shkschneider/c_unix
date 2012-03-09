@@ -6,15 +6,15 @@
 #include <stdlib.h>
 #include <string.h>
 
-void		do_a_directory(char *pathname, int level)
+void do_a_directory(char *pathname, int level)
 {
-  DIR		*directory;
-  struct dirent	*entry;
-  char		*newname;
-  struct stat	statbuf;
-  long		where;
-  int		retval;
-  int		i;
+  DIR *directory = NULL;
+  struct dirent *entry = NULL;
+  char *newname = NULL;
+  struct stat statbuf;
+  long where;
+  int retval;
+  int i;
 
   /* └ ├ ─ */
   for (i = 0; i < level; i++)
@@ -50,9 +50,9 @@ void		do_a_directory(char *pathname, int level)
   closedir(directory);
 }
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-  int	i;
+  int i;
 
   if (argc < 2)
     {

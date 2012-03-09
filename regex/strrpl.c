@@ -1,13 +1,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-char	*strrpl(char *str, char *old, char *new)
+char *strrpl(char *str, char *old, char *new)
 {
-  int	old_len;
-  int	new_len;
-  char	*new_str;
-  char	*f;
-  char	*dup;
+  int old_len;
+  int new_len;
+  char *new_str = NULL;
+  char *f = NULL;
+  char *dup = NULL;
 
   old_len = strlen(old);
   new_len = strlen(new);

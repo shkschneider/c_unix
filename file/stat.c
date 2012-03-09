@@ -5,12 +5,12 @@
 #include <pwd.h>
 #include <stdlib.h>
 
-char	*my_chmod[] = { "---", "--x", "-w-", "-wx", "r--", "r-x", "rw-", "rwx" };
+char *array_chmod[] = { "---", "--x", "-w-", "-wx", "r--", "r-x", "rw-", "rwx" };
 
-void		my_stat(char *name, struct stat *st)
+void my_stat(char *name, struct stat *st)
 {
-  int		i;
-  struct passwd	*passent;
+  int i;
+  struct passwd	*passent = NULL;
 
   printf("%s:\n", name);
   printf(" Last access : %s", ctime(&(st->st_atime)));
@@ -26,14 +26,14 @@ void		my_stat(char *name, struct stat *st)
     printf(" The owner of the file is #%d: (unknown)\n", st->st_uid);
   printf(" Access mode 0%o: ", st->st_mode);
   for (i = 6; i >= 0; i -= 3)
-    printf("%s", my_chmod[(st->st_mode >> i) & 7]);
+    printf("%s", array_chmod[(st->st_mode >> i) & 7]);
   printf("\n");
 }
 
-int		main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-  struct stat	st;
-  int		i;
+  struct stat st;
+  int i;
 
   i = (argc == 1 ? 0 : 1);
   while (i < argc)

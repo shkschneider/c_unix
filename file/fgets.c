@@ -5,10 +5,10 @@
 # define MAXLEN	1024
 #endif
 
-int	main(void)
+int main(void)
 {
-  FILE	*f;
-  char	str[MAXLEN];
+  FILE *f = NULL;
+  char str[MAXLEN];
 
   if ((f = fopen("test", "r")))
     {

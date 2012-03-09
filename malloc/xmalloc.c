@@ -3,7 +3,7 @@
 
 void *xmalloc(size_t sz)
 {
-  void * p;
+  void * p = NULL;
 
   p = malloc(sz);
   if (p == NULL)

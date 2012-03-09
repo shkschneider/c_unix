@@ -1,10 +1,10 @@
 #include <termios.h>
 
-struct termios	oldtermios;
+struct termios oldtermios;
 
-int	raw_mod(void)
+int raw_mod(void)
 {
-  struct termios	newtermios;
+  struct termios newtermios;
 
   if (tcgetattr(0, &oldtermios) < 0)
     return (0);
@@ -27,10 +27,10 @@ int	raw_mod(void)
 
 #include "raw_mod.h"
 
-int	main(void)
+int main(void)
 {
-  char	c[8];
-  int	t;
+  char c[8];
+  int t;
 
   printf("ESC stops the program.\n");
   if (!raw_mod())

@@ -6,13 +6,13 @@
 #include <sys/socket.h>
 #include <sys/un.h>
 
-# define SOCK_PATH	"socket"
+#define SOCK_PATH "socket.sock"
 
-int			main(void)
+int main(void)
 {
-  int			s, t, len;
-  struct sockaddr_un	remote;
-  char			str[100];
+  int s, t, len;
+  struct sockaddr_un remote;
+  char str[100];
 
   if ((s = socket(AF_UNIX, SOCK_STREAM, 0)) < 0)
     return (1);

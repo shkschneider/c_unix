@@ -1,18 +1,18 @@
-void	quick_sort_swap(int *from, int *to)
+void quick_sort_swap(int *from, int *to)
 {
-  int	tmp;
+  int tmp;
 
   tmp = *from;
   *from = *to;
   *to = tmp;
 }
 
-void	quick_sort(int *tabl, int size)
+void quick_sort(int *tabl, int size)
 {
-  int	*end;
-  int	*left;
-  int	*right;
-  int	*p;
+  int *end = NULL;
+  int *left = NULL;
+  int *right = NULL;
+  int *p = NULL;
 
   end = tabl + size - 1;
   if (tabl < end)

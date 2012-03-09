@@ -14,7 +14,7 @@ struct option opts_long_list[] =
 
 char *opts_long_init(void)
 {
-  char *opts;
+  char *opts = NULL;
   int i;
   int j;
 
@@ -44,7 +44,7 @@ int *opts_long_get(char c)
 
 int opts_long_parse(int argc, char **argv)
 {
-  char *opts;
+  char *opts = NULL;
   int i;
   int c;
 

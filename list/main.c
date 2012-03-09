@@ -2,7 +2,7 @@
 
 #include "list.h"
 
-void	list_print(t_list *l)
+void list_print(t_list *l)
 {
   if (!l)
     return ;
@@ -10,9 +10,9 @@ void	list_print(t_list *l)
   list_print(l->next);
 }
 
-int		main(void)
+int main(void)
 {
-  t_list	*l;
+  t_list *l = NULL;
 
   printf("creating\n");
   l = list_create((void *)1);

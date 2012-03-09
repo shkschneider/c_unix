@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void	clear_buffer()
+void clear_buffer(void)
 {
   int c;
 
@@ -10,9 +10,9 @@ void	clear_buffer()
     c = getchar();
 }
 
-int	get_line(char *str, int len)
+int get_line(char *str, int len)
 {
-  char	*p;
+  char *p = NULL;
 
   if (fgets(str, len, stdin))
     if ((p = strchr(str, '\n')))

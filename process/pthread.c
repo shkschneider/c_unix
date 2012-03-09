@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <pthread.h>
 
-void	*work(void *arg)
+void *work(void *arg)
 {
-  int	i;
+  int i;
 
   /* pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL); */
   for (i = 0; i < 5; i++)
@@ -14,11 +14,11 @@ void	*work(void *arg)
   pthread_exit(0);
 }
 
-int			main(void)
+int main(void)
 {
-  pthread_t		thread1;
-  pthread_t		thread2;
-  pthread_attr_t	pattr;
+  pthread_t thread1;
+  pthread_t thread2;
+  pthread_attr_t pattr;
 
   pthread_attr_init(&pattr);
   /* pthread_attr_setdetachstate(&pattr, PTHREAD_CREATE_DETACHED); */
