@@ -32,6 +32,8 @@ int main(int argc, char **argv)
       add_history(cmd_line);
     // TODO add builtins with a list of function pointers
     system(cmd_line);
+    // do not forget to free
+    free(cmd_line);
   }
 
   return (0);
