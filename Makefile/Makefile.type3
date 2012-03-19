@@ -3,7 +3,7 @@
 #                  Assemble .o files as a static libray.
 #                  Attention: do NOT place a main()
 #
-# Copyright (C) 2011  Alan "Shtark" SCHNEIDER
+# Copyright (C) 2011  Alan SCHNEIDER
 #                     <shk.schneider[at]gmail.com>
 #
 
