@@ -50,6 +50,6 @@ int main(void)
   bilist_print(l);
   putchar('\n');
   printf("remove all\n");
-  l = bilist_empty(l);
+  l = bilist_clear(l);
   return (0);
 }

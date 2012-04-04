@@ -1,10 +1,5 @@
-typedef enum bool
-  {
-    TRUE = 1,
-    FALSE = 0
-  } bool;
-
 #include <stdio.h>
+#include "bool.h"
 
 int main(void)
 {

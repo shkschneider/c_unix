@@ -51,6 +51,6 @@ int main(void)
   list_print(l);
   putchar('\n');
   printf("remove all\n");
-  l = list_empty(l);
+  l = list_clear(l);
   return (0);
 }
