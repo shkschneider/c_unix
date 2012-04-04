@@ -86,7 +86,7 @@ t_list	*list_clear(t_list *l)
 {
   if (!l)
     return (NULL);
-  list_empty(l->next);
+  list_clear(l->next);
   free(l);
   return (NULL);
 }
