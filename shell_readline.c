@@ -3,9 +3,10 @@
  */
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <readline/readline.h>
 #include <readline/history.h>
-#include <stdio.h>
+#include <strings.h>
 
 /*
  * This program uses GNU libreadline
