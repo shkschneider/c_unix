@@ -13,9 +13,9 @@ NAME	= libcfree.a
 
 CC	= gcc
 
-CFLAGS	= -I.
-CFLAGS	:= -W -Wall -Wstrict-prototypes -pedantic --std=c99
-CFLAGS	:= -fno-strict-aliasing -funroll-loops -O3
+CFLAGS	= -I. \
+        -W -Wall -Wstrict-prototypes -pedantic --std=c99 \
+        -fno-strict-aliasing -funroll-loops -O3
 
 LDFLAGS	= -lc
 
