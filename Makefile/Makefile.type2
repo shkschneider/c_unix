@@ -12,9 +12,9 @@ CC	= gcc
 
 NAME	= my
 
-CFLAGS	= -I.
-CFLAGS	:= -W -Wall -Wstrict-prototypes -pedantic -ansi
-CFLAGS	:= -funroll-loops -O3
+CFLAGS	= -I. \
+        -W -Wall -Wstrict-prototypes -pedantic -ansi \
+        -funroll-loops -O3
 
 LDFLAGS	= -lc
 
@@ -31,8 +31,6 @@ RMDIR	= rm -rf
 #	Rules
 
 $(NAME)	: $(OBJ)
-	@echo "--- SRC: [ $(SRC) ]"
-	@echo "--- OBJ: [ $(OBJ) ]"
 	$(CC) -o $(NAME) $(OBJ) $(LDFLAGS)
 
 all	: $(NAME)
