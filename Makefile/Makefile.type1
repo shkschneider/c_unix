@@ -2,8 +2,8 @@
 # Typical Makefile [Type1]
 #                  Stores OBJs in SRC's directory
 #
-# Copyright (C) 2011  Alan SCHNEIDER
-#                     <shk.schneider[at]gmail.com>
+# Copyright (C) 2011-2012  Alan SCHNEIDER
+#                          <shk.schneider[at]gmail.com>
 #
 
 #	Variables
@@ -12,9 +12,9 @@ CC	= gcc
 
 NAME	= my
 
-CFLAGS	= -I.
-CFLAGS	:= -W -Wall -Wstrict-prototypes -pedantic -ansi
-CFLAGS	:= -funroll-loops -O3
+CFLAGS	= -I. \
+        -W -Wall -Wstrict-prototypes -pedantic -ansi \
+        -funroll-loops -O3
 
 LDFLAGS	= -lc
 
