@@ -1,11 +1,4 @@
-void heap_sort_swap(int *tabl, int n1, int n2)
-{
-  int tmp;
-
-  tmp = tabl[n1];
-  tabl[n1] = tabl[n2];
-  tabl[n2] = tmp;
-}
+#include "sort.h"
 
 void do_heap_sort(int *tabl, int n, int k, int tabl_size)
 {
@@ -14,7 +7,7 @@ void do_heap_sort(int *tabl, int n, int k, int tabl_size)
 
   while (tabl_size--)
     {
-      heap_sort_swap(tabl, 0, tabl_size);
+      sort_swap(tabl, 0, tabl_size);
       for (n = 0; (i = (2 * n) + 1) < tabl_size; n = k)
         {
 	  j = i + 1;
@@ -23,7 +16,7 @@ void do_heap_sort(int *tabl, int n, int k, int tabl_size)
 	  else
 	    k = i;
 	  if (tabl[n] < tabl[k])
-	    heap_sort_swap(tabl, n, k);
+	    sort_swap(tabl, n, k);
 	  else
 	    break ;
         }
@@ -43,7 +36,7 @@ void heap_sort(int *tabl, int size)
         {
 	  k = (n - 1) / 2;
 	  if (tabl[n] > tabl[k])
-	    heap_sort_swap(tabl, n, k);
+	    sort_swap(tabl, n, k);
 	  else
 	    break ;
         }

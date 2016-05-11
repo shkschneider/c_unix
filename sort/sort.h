@@ -10,4 +10,6 @@ void radix_sort(int *tabl, int size);
 void selection_sort(int *tabl, int size);
 void shell_sort(int *tabl, int size);
 
+void sort_swap(int *tabl, int n1, int n2);
+
 #endif /* !_SORT_H_ */
