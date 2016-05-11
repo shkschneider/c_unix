@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 void quick_sort_swap(int *from, int *to)
 {
   int tmp;
